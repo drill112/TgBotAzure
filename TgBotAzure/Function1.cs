@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.IO;
 using System.Net.Http;
 using System.Text;
@@ -14,7 +14,7 @@ public class TelegramWebhook
 
     private const string TELEGRAM_TOKEN = "PASTE_YOUR_TELEGRAM_TOKEN";
     private const string GEMINI_API_KEY = "PASTE_YOUR_GEMINI_KEY";
-    private const string STORAGE_CONNECTION = "PASTE_YOUR_AZURE_CONNECTION";
+    private const string storage = "PASTE_YOUR_AZURE_CONNECTION";
 
     private const string CONTAINER_NAME = "reviews";
 
@@ -31,7 +31,7 @@ public class TelegramWebhook
         var chatId = update.message.chat.id;
         var userText = update.message.text;
 
-        string prompt = "Ты Senior C# разработчик. Проверь код, оцени от 1 до 10 и дай советы:\n" + userText;
+        string prompt = "РўС‹ Senior C# СЂР°Р·СЂР°Р±РѕС‚С‡РёРє. РџСЂРѕРІРµСЂСЊ РєРѕРґ, РѕС†РµРЅРё РѕС‚ 1 РґРѕ 10 Рё РґР°Р№ СЃРѕРІРµС‚С‹:\n" + userText;
 
         var aiResponse = await CallGemini(prompt);
 
@@ -47,7 +47,7 @@ public class TelegramWebhook
 
         var fileUrl = blob.Uri.ToString();
 
-        await SendMessage(chatId, $"Готово ?\n{fileUrl}");
+        await SendMessage(chatId, $"Р“РѕС‚РѕРІРѕ вњ…\n{fileUrl}");
 
         var response = req.CreateResponse(System.Net.HttpStatusCode.OK);
         return response;
